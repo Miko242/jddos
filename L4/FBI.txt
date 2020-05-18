@@ -1,0 +1,1 @@
+perl gott.10.pl ${ip} ${port} 65500 ${time}
